@@ -6,6 +6,13 @@ body {
 	font-family: 'Inter';
 	font-style: normal;
 }
+
+/* rajout pour la tag active */
+.nav-link.active-tag {
+	color:#FFFFFF;
+	background-color:#BEB45A;
+}
+
 .top-header {
 	background-color: white;
 	position: sticky;
@@ -106,7 +113,8 @@ body {
 	border-radius:0 ;
 }
 .nav-pills .nav-link {
-	color: #000
+	color: #000; 
+	cursor:pointer
 }
 .item-column {
 	position: relative;
