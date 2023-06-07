@@ -21,7 +21,7 @@
 
   const toType = obj => {
     if (obj === null || obj === undefined) {
-      return `${obj}`;
+   //   return `${obj}`;
     }
 
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -33,13 +33,13 @@
    */
 
 
-  const getUID = prefix => {
-    do {
-      prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
+  //const getUID = prefix => {
+   // do {
+     // prefix += Math.floor(Math.random() * MAX_UID);
+    //} while (document.getElementById(prefix));
 
-    return prefix;
-  };
+    //return prefix;
+  //};
 
   const getSelector = element => {
     let selector = element.getAttribute('data-bs-target');
@@ -102,7 +102,7 @@
     transitionDelay = transitionDelay.split(',')[0];
     return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
   };
-
+  
   const triggerTransitionEnd = element => {
     element.dispatchEvent(new Event(TRANSITION_END));
   };
@@ -139,14 +139,14 @@
       const valueType = value && isElement$1(value) ? 'element' : toType(value);
 
       if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
+       //  throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
       }
     });
   };
 
   const isVisible = element => {
     if (!isElement$1(element) || element.getClientRects().length === 0) {
-      return false;
+       //return false;
     }
 
     return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
@@ -168,28 +168,28 @@
     return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
   };
 
-  const findShadowRoot = element => {
-    if (!document.documentElement.attachShadow) {
-      return null;
-    } // Can find the shadow root otherwise it'll return the document
+   //const findShadowRoot = element => {
+     //if (!document.documentElement.attachShadow) {
+       //return null;
+     //} // Can find the shadow root otherwise it'll return the document
 
 
-    if (typeof element.getRootNode === 'function') {
-      const root = element.getRootNode();
-      return root instanceof ShadowRoot ? root : null;
-    }
+     //if (typeof element.getRootNode === 'function') {
+       //const root = element.getRootNode();
+       //return root instanceof ShadowRoot ? root : null;
+     //}
 
-    if (element instanceof ShadowRoot) {
-      return element;
-    } // when we don't find a shadow root
+     //if (element instanceof ShadowRoot) {
+       //return element;
+     //} // when we don't find a shadow root
 
 
-    if (!element.parentNode) {
-      return null;
-    }
+     //if (!element.parentNode) {
+       //return null;
+     //}
 
-    return findShadowRoot(element.parentNode);
-  };
+     //return findShadowRoot(element.parentNode);
+   //};
 
   const noop = () => {};
   /**
@@ -216,7 +216,7 @@
       return jQuery;
     }
 
-    return null;
+     //return null;
   };
 
   const DOMContentLoadedCallbacks = [];
@@ -250,8 +250,8 @@
         $.fn[name].Constructor = plugin;
 
         $.fn[name].noConflict = () => {
-          $.fn[name] = JQUERY_NO_CONFLICT;
-          return plugin.jQueryInterface;
+   //        $.fn[name] = JQUERY_NO_CONFLICT;
+      //     return plugin.jQueryInterface;
         };
       }
     });
@@ -307,7 +307,7 @@
     let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
 
     if (index === -1) {
-      return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
+    //   return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
     }
 
     const listLength = list.length;
@@ -786,27 +786,27 @@
     } // Public
 
 
-    close() {
-      const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
+ //    close() {
+    //   const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
 
-      if (closeEvent.defaultPrevented) {
-        return;
-      }
+       //if (closeEvent.defaultPrevented) {
+         //return;
+       //}
 
-      this._element.classList.remove(CLASS_NAME_SHOW$8);
+       //this._element.classList.remove(CLASS_NAME_SHOW$8);
 
-      const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
+       //const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
 
-      this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
-    } // Private
+       //this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
+     //} // Private
 
 
-    _destroyElement() {
-      this._element.remove();
+   //  _destroyElement() {
+      // this._element.remove();
 
-      EventHandler.trigger(this._element, EVENT_CLOSED);
-      this.dispose();
-    } // Static
+       //EventHandler.trigger(this._element, EVENT_CLOSED);
+       //this.dispose();
+     //} // Static
 
 
     static jQueryInterface(config) {
@@ -875,10 +875,10 @@
     } // Public
 
 
-    toggle() {
+     //toggle() {
       // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
-      this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
-    } // Static
+       //this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
+     //} // Static
 
 
     static jQueryInterface(config) {
@@ -899,12 +899,12 @@
    */
 
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
-    event.preventDefault();
-    const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
-    const data = Button.getOrCreateInstance(button);
-    data.toggle();
-  });
+   //EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
+    // event.preventDefault();
+     //const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
+     //const data = Button.getOrCreateInstance(button);
+     //data.toggle();
+   //});
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -1004,57 +1004,57 @@
       return Element.prototype.querySelector.call(element, selector);
     },
 
-    children(element, selector) {
-      return [].concat(...element.children).filter(child => child.matches(selector));
-    },
+   //  children(element, selector) {
+      // return [].concat(...element.children).filter(child => child.matches(selector));
+     //},
 
-    parents(element, selector) {
-      const parents = [];
-      let ancestor = element.parentNode;
+     //parents(element, selector) {
+       //const parents = [];
+       //let ancestor = element.parentNode;
 
-      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-        if (ancestor.matches(selector)) {
-          parents.push(ancestor);
-        }
+       //while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
+         //if (ancestor.matches(selector)) {
+           //parents.push(ancestor);
+         //}
 
-        ancestor = ancestor.parentNode;
-      }
+         //ancestor = ancestor.parentNode;
+       //}
 
-      return parents;
-    },
+       //return parents;
+     //},
 
-    prev(element, selector) {
-      let previous = element.previousElementSibling;
+     //prev(element, selector) {
+      // let previous = element.previousElementSibling;
 
-      while (previous) {
-        if (previous.matches(selector)) {
-          return [previous];
-        }
+       //while (previous) {
+         //if (previous.matches(selector)) {
+           //return [previous];
+         //}
 
-        previous = previous.previousElementSibling;
-      }
+         //previous = previous.previousElementSibling;
+       //}
 
-      return [];
-    },
+       //return [];
+     //},
 
-    next(element, selector) {
-      let next = element.nextElementSibling;
+     //next(element, selector) {
+       //let next = element.nextElementSibling;
 
-      while (next) {
-        if (next.matches(selector)) {
-          return [next];
-        }
+       //while (next) {
+         //if (next.matches(selector)) {
+        //   return [next];
+         //}
 
-        next = next.nextElementSibling;
-      }
+         //next = next.nextElementSibling;
+       //}
 
-      return [];
-    },
+       //return [];
+     //},
 
-    focusableChildren(element) {
-      const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(', ');
-      return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
-    }
+     //focusableChildren(element) {
+       //const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(', ');
+       //return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
+    // }
 
   };
 
@@ -1217,30 +1217,30 @@
       }
     }
 
-    to(index) {
-      this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+  //  to(index) {
+    //  this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
 
-      const activeIndex = this._getItemIndex(this._activeElement);
+      //const activeIndex = this._getItemIndex(this._activeElement);
 
-      if (index > this._items.length - 1 || index < 0) {
-        return;
-      }
+      //if (index > this._items.length - 1 || index < 0) {
+       // return;
+      //}
 
-      if (this._isSliding) {
-        EventHandler.one(this._element, EVENT_SLID, () => this.to(index));
-        return;
-      }
+      //if (this._isSliding) {
+       // EventHandler.one(this._element, EVENT_SLID, () => this.to(index));
+        //return;
+      //}
 
-      if (activeIndex === index) {
-        this.pause();
-        this.cycle();
-        return;
-      }
+      //if (activeIndex === index) {
+        //this.pause();
+        //this.cycle();
+        //return;
+     // }
 
-      const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV;
+   //   const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV;
 
-      this._slide(order, this._items[index]);
-    } // Private
+     // this._slide(order, this._items[index]);
+    //} // Private
 
 
     _getConfig(config) {
@@ -1252,22 +1252,22 @@
       return config;
     }
 
-    _handleSwipe() {
-      const absDeltax = Math.abs(this.touchDeltaX);
+  //  _handleSwipe() {
+    //  const absDeltax = Math.abs(this.touchDeltaX);
 
-      if (absDeltax <= SWIPE_THRESHOLD) {
-        return;
-      }
+      //if (absDeltax <= SWIPE_THRESHOLD) {
+        //return;
+      //}
 
-      const direction = absDeltax / this.touchDeltaX;
-      this.touchDeltaX = 0;
+      //const direction = absDeltax / this.touchDeltaX;
+      //this.touchDeltaX = 0;
 
-      if (!direction) {
-        return;
-      }
+      //if (!direction) {
+        //return;
+      //}
 
-      this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT);
-    }
+      //this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT);
+    //}
 
     _addEventListeners() {
       if (this._config.keyboard) {
@@ -1284,32 +1284,32 @@
       }
     }
 
-    _addTouchEventListeners() {
-      const hasPointerPenTouch = event => {
-        return this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
-      };
+ //   _addTouchEventListeners() {
+   //   const hasPointerPenTouch = event => {
+     //   return this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+     // };
 
-      const start = event => {
-        if (hasPointerPenTouch(event)) {
-          this.touchStartX = event.clientX;
-        } else if (!this._pointerEvent) {
-          this.touchStartX = event.touches[0].clientX;
-        }
-      };
+    //  const start = event => {
+      //  if (hasPointerPenTouch(event)) {
+       //   this.touchStartX = event.clientX;
+       // } else if (!this._pointerEvent) {
+       //   this.touchStartX = event.touches[0].clientX;
+     //   }
+     // };
 
-      const move = event => {
+    //  const move = event => {
         // ensure swiping with one touch and not pinching
-        this.touchDeltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this.touchStartX;
-      };
+     //   this.touchDeltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this.touchStartX;
+     // };
 
-      const end = event => {
-        if (hasPointerPenTouch(event)) {
-          this.touchDeltaX = event.clientX - this.touchStartX;
-        }
+     // const end = event => {
+     //   if (hasPointerPenTouch(event)) {
+       //   this.touchDeltaX = event.clientX - this.touchStartX;
+       // }
 
-        this._handleSwipe();
+       // this._handleSwipe();
 
-        if (this._config.pause === 'hover') {
+       // if (this._config.pause === 'hover') {
           // If it's a touch-enabled device, mouseenter/leave are fired as
           // part of the mouse compatibility events on first tap - the carousel
           // would stop cycling until user tapped out of it;
@@ -1317,45 +1317,45 @@
           // (as if it's the second time we tap on it, mouseenter compat event
           // is NOT fired) and after a timeout (to allow for mouse compatibility
           // events to fire) we explicitly restart cycling
-          this.pause();
+        //  this.pause();
 
-          if (this.touchTimeout) {
-            clearTimeout(this.touchTimeout);
-          }
+          //if (this.touchTimeout) {
+            //clearTimeout(this.touchTimeout);
+          //}
 
-          this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval);
-        }
-      };
+          //this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval);
+        //}
+      //};
 
-      SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
-        EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault());
-      });
+      //SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
+        //EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault());
+      //});
 
-      if (this._pointerEvent) {
-        EventHandler.on(this._element, EVENT_POINTERDOWN, event => start(event));
-        EventHandler.on(this._element, EVENT_POINTERUP, event => end(event));
+      //if (this._pointerEvent) {
+       // EventHandler.on(this._element, EVENT_POINTERDOWN, event => start(event));
+        //EventHandler.on(this._element, EVENT_POINTERUP, event => end(event));
 
-        this._element.classList.add(CLASS_NAME_POINTER_EVENT);
-      } else {
-        EventHandler.on(this._element, EVENT_TOUCHSTART, event => start(event));
-        EventHandler.on(this._element, EVENT_TOUCHMOVE, event => move(event));
-        EventHandler.on(this._element, EVENT_TOUCHEND, event => end(event));
-      }
-    }
+        //this._element.classList.add(CLASS_NAME_POINTER_EVENT);
+      //} else {
+       // EventHandler.on(this._element, EVENT_TOUCHSTART, event => start(event));
+        //EventHandler.on(this._element, EVENT_TOUCHMOVE, event => move(event));
+        //EventHandler.on(this._element, EVENT_TOUCHEND, event => end(event));
+      //}
+    //}
 
-    _keydown(event) {
-      if (/input|textarea/i.test(event.target.tagName)) {
-        return;
-      }
+    //_keydown(event) {
+      //if (/input|textarea/i.test(event.target.tagName)) {
+        //return;
+      //}
 
-      const direction = KEY_TO_DIRECTION[event.key];
+      //const direction = KEY_TO_DIRECTION[event.key];
 
-      if (direction) {
-        event.preventDefault();
+      //if (direction) {
+        //event.preventDefault();
 
-        this._slide(direction);
-      }
-    }
+        //this._slide(direction);
+      //}
+    //}
 
     _getItemIndex(element) {
       this._items = element && element.parentNode ? SelectorEngine.find(SELECTOR_ITEM, element.parentNode) : [];
@@ -1958,9 +1958,9 @@
   var afterWrite = 'afterWrite';
   var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
 
-  function getNodeName(element) {
-    return element ? (element.nodeName || '').toLowerCase() : null;
-  }
+ // function getNodeName(element) {
+   // return element ? (element.nodeName || '').toLowerCase() : null;
+  //}
 
   function getWindow(node) {
     if (node == null) {
@@ -1975,25 +1975,25 @@
     return node;
   }
 
-  function isElement(node) {
-    var OwnElement = getWindow(node).Element;
-    return node instanceof OwnElement || node instanceof Element;
-  }
+ // function isElement(node) {
+   // var OwnElement = getWindow(node).Element;
+    //return node instanceof OwnElement || node instanceof Element;
+  //}
 
-  function isHTMLElement(node) {
-    var OwnElement = getWindow(node).HTMLElement;
-    return node instanceof OwnElement || node instanceof HTMLElement;
-  }
+ // function isHTMLElement(node) {
+ //   var OwnElement = getWindow(node).HTMLElement;
+   // return node instanceof OwnElement || node instanceof HTMLElement;
+  //}
 
-  function isShadowRoot(node) {
+//  function isShadowRoot(node) {
     // IE 11 has no ShadowRoot
-    if (typeof ShadowRoot === 'undefined') {
-      return false;
-    }
+  //  if (typeof ShadowRoot === 'undefined') {
+    //  return false;
+    //}
 
-    var OwnElement = getWindow(node).ShadowRoot;
-    return node instanceof OwnElement || node instanceof ShadowRoot;
-  }
+    //var OwnElement = getWindow(node).ShadowRoot;
+    //return node instanceof OwnElement || node instanceof ShadowRoot;
+  //}
 
   // and applies them to the HTMLElements such as popper and arrow
 
@@ -2078,17 +2078,17 @@
     requires: ['computeStyles']
   };
 
-  function getBasePlacement(placement) {
-    return placement.split('-')[0];
-  }
+ // function getBasePlacement(placement) {
+  //  return placement.split('-')[0];
+  //}
 
   // import { isHTMLElement } from './instanceOf';
-  function getBoundingClientRect(element, // eslint-disable-next-line unused-imports/no-unused-vars
-  includeScale) {
+ // function getBoundingClientRect(element, // eslint-disable-next-line unused-imports/no-unused-vars
+ // includeScale) {
 
-    var rect = element.getBoundingClientRect();
-    var scaleX = 1;
-    var scaleY = 1; // FIXME:
+  //  var rect = element.getBoundingClientRect();
+  //  var scaleX = 1;
+   // var scaleY = 1; // FIXME:
     // `offsetWidth` returns an integer while `getBoundingClientRect`
     // returns a float. This results in `scaleX` or `scaleY` being
     // non-1 when it should be for elements that aren't a full pixel in
@@ -2106,105 +2106,105 @@
     //   }
     // }
 
-    return {
-      width: rect.width / scaleX,
-      height: rect.height / scaleY,
-      top: rect.top / scaleY,
-      right: rect.right / scaleX,
-      bottom: rect.bottom / scaleY,
-      left: rect.left / scaleX,
-      x: rect.left / scaleX,
-      y: rect.top / scaleY
-    };
-  }
+   // return {
+     // width: rect.width / scaleX,
+      //height: rect.height / scaleY,
+    //  top: rect.top / scaleY,
+     // right: rect.right / scaleX,
+      //bottom: rect.bottom / scaleY,
+      //left: rect.left / scaleX,
+      //x: rect.left / scaleX,
+      //y: rect.top / scaleY
+    //};
+  //}
 
   // means it doesn't take into account transforms.
 
-  function getLayoutRect(element) {
-    var clientRect = getBoundingClientRect(element); // Use the clientRect sizes if it's not been transformed.
+ // function getLayoutRect(element) {
+   // var clientRect = getBoundingClientRect(element); // Use the clientRect sizes if it's not been transformed.
     // Fixes https://github.com/popperjs/popper-core/issues/1223
 
-    var width = element.offsetWidth;
-    var height = element.offsetHeight;
+    //var width = element.offsetWidth;
+    //var height = element.offsetHeight;
 
-    if (Math.abs(clientRect.width - width) <= 1) {
-      width = clientRect.width;
-    }
+    //if (Math.abs(clientRect.width - width) <= 1) {
+     // width = clientRect.width;
+    //}
 
-    if (Math.abs(clientRect.height - height) <= 1) {
-      height = clientRect.height;
-    }
+    //if (Math.abs(clientRect.height - height) <= 1) {
+      //height = clientRect.height;
+    //}
 
-    return {
-      x: element.offsetLeft,
-      y: element.offsetTop,
-      width: width,
-      height: height
-    };
-  }
+    //return {
+      //x: element.offsetLeft,
+      //y: element.offsetTop,
+      //width: width,
+      //height: height
+    //};
+  //}
 
-  function contains(parent, child) {
-    var rootNode = child.getRootNode && child.getRootNode(); // First, attempt with faster native method
+ // function contains(parent, child) {
+   // var rootNode = child.getRootNode && child.getRootNode(); // First, attempt with faster native method
 
-    if (parent.contains(child)) {
-      return true;
-    } // then fallback to custom implementation with Shadow DOM support
-    else if (rootNode && isShadowRoot(rootNode)) {
-        var next = child;
+    //if (parent.contains(child)) {
+      //return true;
+    //} // then fallback to custom implementation with Shadow DOM support
+    //else if (rootNode && isShadowRoot(rootNode)) {
+      //  var next = child;
 
-        do {
-          if (next && parent.isSameNode(next)) {
-            return true;
-          } // $FlowFixMe[prop-missing]: need a better way to handle this...
-
-
-          next = next.parentNode || next.host;
-        } while (next);
-      } // Give up, the result is false
+        //do {
+          //if (next && parent.isSameNode(next)) {
+            //return true;
+          //} // $FlowFixMe[prop-missing]: need a better way to handle this...
 
 
-    return false;
-  }
+        //  next = next.parentNode || next.host;
+        //} while (next);
+      //} // Give up, the result is false
 
-  function getComputedStyle$1(element) {
-    return getWindow(element).getComputedStyle(element);
-  }
 
-  function isTableElement(element) {
-    return ['table', 'td', 'th'].indexOf(getNodeName(element)) >= 0;
-  }
+    //return false;
+  //}
 
-  function getDocumentElement(element) {
+  //function getComputedStyle$1(element) {
+    //return getWindow(element).getComputedStyle(element);
+ // }
+
+ // function isTableElement(element) {
+   // return ['table', 'td', 'th'].indexOf(getNodeName(element)) >= 0;
+  //}
+
+ // function getDocumentElement(element) {
     // $FlowFixMe[incompatible-return]: assume body is always available
-    return ((isElement(element) ? element.ownerDocument : // $FlowFixMe[prop-missing]
-    element.document) || window.document).documentElement;
-  }
+   // return ((isElement(element) ? element.ownerDocument : // $FlowFixMe[prop-missing]
+   // element.document) || window.document).documentElement;
+ // }
 
-  function getParentNode(element) {
-    if (getNodeName(element) === 'html') {
-      return element;
-    }
+ // function getParentNode(element) {
+   // if (getNodeName(element) === 'html') {
+     // return element;
+    //}
 
-    return (// this is a quicker (but less type safe) way to save quite some bytes from the bundle
+    //return (// this is a quicker (but less type safe) way to save quite some bytes from the bundle
       // $FlowFixMe[incompatible-return]
       // $FlowFixMe[prop-missing]
-      element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
-      element.parentNode || ( // DOM Element detected
-      isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
+      //element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
+      //element.parentNode || ( // DOM Element detected
+      //isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
       // $FlowFixMe[incompatible-call]: HTMLElement is a Node
-      getDocumentElement(element) // fallback
+      //getDocumentElement(element) // fallback
 
-    );
-  }
+    //);
+  //}
 
-  function getTrueOffsetParent(element) {
-    if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
-    getComputedStyle$1(element).position === 'fixed') {
-      return null;
-    }
+ // function getTrueOffsetParent(element) {
+   // if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
+   // getComputedStyle$1(element).position === 'fixed') {
+   //   return null;
+   // }
 
-    return element.offsetParent;
-  } // `.offsetParent` reports `null` for fixed elements, while absolute elements
+   // return element.offsetParent;
+//  } // `.offsetParent` reports `null` for fixed elements, while absolute elements
   // return the containing block
 
 
@@ -2263,38 +2263,38 @@
   var min = Math.min;
   var round = Math.round;
 
-  function within(min$1, value, max$1) {
-    return max(min$1, min(value, max$1));
-  }
+ // function within(min$1, value, max$1) {
+   // return max(min$1, min(value, max$1));
+  //}
 
-  function getFreshSideObject() {
-    return {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    };
-  }
+//function getFreshSideObject() {
+  //  return {
+    //  top: 0,
+    //  right: 0,
+      //bottom: 0,
+     // left: 0
+    //};
+  //}
 
-  function mergePaddingObject(paddingObject) {
-    return Object.assign({}, getFreshSideObject(), paddingObject);
-  }
+  //function mergePaddingObject(paddingObject) {
+   // return Object.assign({}, getFreshSideObject(), paddingObject);
+  //}
 
-  function expandToHashMap(value, keys) {
+  /*function expandToHashMap(value, keys) {
     return keys.reduce(function (hashMap, key) {
       hashMap[key] = value;
       return hashMap;
     }, {});
-  }
+  }*/
 
-  var toPaddingObject = function toPaddingObject(padding, state) {
+ /* var toPaddingObject = function toPaddingObject(padding, state) {
     padding = typeof padding === 'function' ? padding(Object.assign({}, state.rects, {
       placement: state.placement
     })) : padding;
     return mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements));
-  };
+  };*/
 
-  function arrow(_ref) {
+ function arrow(_ref) {
     var _state$modifiersData$;
 
     var state = _ref.state,
@@ -2329,7 +2329,7 @@
 
     var axisProp = axis;
     state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
-  }
+  } 
 
   function effect$1(_ref2) {
     var state = _ref2.state,
@@ -2369,9 +2369,9 @@
     requiresIfExists: ['preventOverflow']
   };
 
-  function getVariation(placement) {
+ /* function getVariation(placement) {
     return placement.split('-')[1];
-  }
+  }*/
 
   var unsetSides = {
     top: 'auto',
@@ -2382,7 +2382,7 @@
   // Zooming can change the DPR, but it seems to report a value that will
   // cleanly divide the values into the appropriate subpixels.
 
-  function roundOffsetsByDPR(_ref) {
+ /* function roundOffsetsByDPR(_ref) {
     var x = _ref.x,
         y = _ref.y;
     var win = window;
@@ -2391,9 +2391,9 @@
       x: round(round(x * dpr) / dpr) || 0,
       y: round(round(y * dpr) / dpr) || 0
     };
-  }
+  }*/
 
-  function mapToStyles(_ref2) {
+ /* function mapToStyles(_ref2) {
     var _Object$assign2;
 
     var popper = _ref2.popper,
@@ -2461,7 +2461,7 @@
     }
 
     return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
-  }
+  }*/
 
   function computeStyles(_ref4) {
     var state = _ref4.state,
@@ -2567,13 +2567,13 @@
     bottom: 'top',
     top: 'bottom'
   };
-  function getOppositePlacement(placement) {
+ /* function getOppositePlacement(placement) {
     return placement.replace(/left|right|bottom|top/g, function (matched) {
       return hash$1[matched];
     });
-  }
+  }*/
 
-  var hash = {
+/*  var hash = {
     start: 'end',
     end: 'start'
   };
@@ -2591,9 +2591,9 @@
       scrollLeft: scrollLeft,
       scrollTop: scrollTop
     };
-  }
+  }*/
 
-  function getWindowScrollBarX(element) {
+ /* function getWindowScrollBarX(element) {
     // If <html> has a CSS width greater than the viewport, then this will be
     // incorrect for RTL.
     // Popper 1 is broken in this case and never had a bug report so let's assume
@@ -2640,11 +2640,11 @@
       x: x + getWindowScrollBarX(element),
       y: y
     };
-  }
+  }*/
 
   // of the `<html>` and `<body>` rect bounds if horizontally scrollable
 
-  function getDocumentRect(element) {
+ /* function getDocumentRect(element) {
     var _element$ownerDocumen;
 
     var html = getDocumentElement(element);
@@ -2688,7 +2688,7 @@
     }
 
     return getScrollParent(getParentNode(node));
-  }
+  }*/
 
   /*
   given a DOM element, return the list of all scroll parents, up the list of ancesors
@@ -2697,7 +2697,7 @@
   reference element's position.
   */
 
-  function listScrollParents(element, list) {
+ /* function listScrollParents(element, list) {
     var _element$ownerDocumen;
 
     if (list === void 0) {
@@ -2737,12 +2737,12 @@
 
   function getClientRectFromMixedType(element, clippingParent) {
     return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isHTMLElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
-  } // A "clipping parent" is an overflowable container with the characteristic of
+  } */// A "clipping parent" is an overflowable container with the characteristic of
   // clipping (or hiding) overflowing elements with a position different from
   // `initial`
 
 
-  function getClippingParents(element) {
+ /* function getClippingParents(element) {
     var clippingParents = listScrollParents(getParentNode(element));
     var canEscapeClipping = ['absolute', 'fixed'].indexOf(getComputedStyle$1(element).position) >= 0;
     var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
@@ -2776,9 +2776,9 @@
     clippingRect.x = clippingRect.left;
     clippingRect.y = clippingRect.top;
     return clippingRect;
-  }
+  }*/
 
-  function computeOffsets(_ref) {
+/*  function computeOffsets(_ref) {
     var reference = _ref.reference,
         element = _ref.element,
         placement = _ref.placement;
@@ -2841,7 +2841,7 @@
     }
 
     return offsets;
-  }
+  }*/
 
   function detectOverflow(state, options) {
     if (options === void 0) {
@@ -2897,7 +2897,7 @@
     return overflowOffsets;
   }
 
-  function computeAutoPlacement(state, options) {
+ /* function computeAutoPlacement(state, options) {
     if (options === void 0) {
       options = {};
     }
@@ -2935,16 +2935,16 @@
     return Object.keys(overflows).sort(function (a, b) {
       return overflows[a] - overflows[b];
     });
-  }
+  }*/
 
-  function getExpandedFallbackPlacements(placement) {
+ /* function getExpandedFallbackPlacements(placement) {
     if (getBasePlacement(placement) === auto) {
       return [];
     }
 
     var oppositePlacement = getOppositePlacement(placement);
     return [getOppositeVariationPlacement(placement), oppositePlacement, getOppositeVariationPlacement(oppositePlacement)];
-  }
+  }*/
 
   function flip(_ref) {
     var state = _ref.state,
@@ -3077,7 +3077,7 @@
     }
   };
 
-  function getSideOffsets(overflow, rect, preventedOffsets) {
+ /* function getSideOffsets(overflow, rect, preventedOffsets) {
     if (preventedOffsets === void 0) {
       preventedOffsets = {
         x: 0,
@@ -3091,13 +3091,13 @@
       bottom: overflow.bottom - rect.height + preventedOffsets.y,
       left: overflow.left - rect.width - preventedOffsets.x
     };
-  }
+  }*/
 
-  function isAnySideFullyClipped(overflow) {
+  /*function isAnySideFullyClipped(overflow) {
     return [top, right, bottom, left].some(function (side) {
       return overflow[side] >= 0;
     });
-  }
+  }*/
 
   function hide(_ref) {
     var state = _ref.state,
@@ -3136,7 +3136,7 @@
     fn: hide
   };
 
-  function distanceAndSkiddingToXY(placement, rects, offset) {
+ /* function distanceAndSkiddingToXY(placement, rects, offset) {
     var basePlacement = getBasePlacement(placement);
     var invertDistance = [left, top].indexOf(basePlacement) >= 0 ? -1 : 1;
 
@@ -3155,7 +3155,7 @@
       x: skidding,
       y: distance
     };
-  }
+  }*/
 
   function offset(_ref2) {
     var state = _ref2.state,
@@ -3212,9 +3212,9 @@
     data: {}
   };
 
-  function getAltAxis(axis) {
+/*  function getAltAxis(axis) {
     return axis === 'x' ? 'y' : 'x';
-  }
+  }*/
 
   function preventOverflow(_ref) {
     var state = _ref.state,
@@ -3328,20 +3328,20 @@
     requiresIfExists: ['offset']
   };
 
-  function getHTMLElementScroll(element) {
+ /* function getHTMLElementScroll(element) {
     return {
       scrollLeft: element.scrollLeft,
       scrollTop: element.scrollTop
     };
-  }
+  }*/
 
-  function getNodeScroll(node) {
+ /* function getNodeScroll(node) {
     if (node === getWindow(node) || !isHTMLElement(node)) {
       return getWindowScroll(node);
     } else {
       return getHTMLElementScroll(node);
     }
-  }
+  }*/
 
   function isElementScaled(element) {
     var rect = element.getBoundingClientRect();
@@ -3352,7 +3352,7 @@
   // Composite means it takes into account transforms as well as layout.
 
 
-  function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
+ /* function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
     if (isFixed === void 0) {
       isFixed = false;
     }
@@ -3465,7 +3465,7 @@
     return Object.keys(merged).map(function (key) {
       return merged[key];
     });
-  }
+  }*/
 
   var DEFAULT_OPTIONS = {
     placement: 'bottom',
@@ -3473,7 +3473,7 @@
     strategy: 'absolute'
   };
 
-  function areValidElements() {
+ /* function areValidElements() {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
@@ -3481,7 +3481,7 @@
     return !args.some(function (element) {
       return !(element && typeof element.getBoundingClientRect === 'function');
     });
-  }
+  }*/
 
   function popperGenerator(generatorOptions) {
     if (generatorOptions === void 0) {
@@ -4157,14 +4157,14 @@
    */
 
 
-  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
-  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
-  EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
-  EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
-  EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
-    event.preventDefault();
-    Dropdown.getOrCreateInstance(this).toggle();
-  });
+//  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
+ // EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
+ // EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
+ // EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
+ // EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
+  //  event.preventDefault();
+  //  Dropdown.getOrCreateInstance(this).toggle();
+ // });
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -4172,7 +4172,7 @@
    * add .Dropdown to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(Dropdown);
+ /* defineJQueryPlugin(Dropdown);*/
 
   /**
    * --------------------------------------------------------------------------
@@ -4895,7 +4895,7 @@
    */
 
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
+ /* EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
     const target = getElementFromSelector(this);
 
     if (['A', 'AREA'].includes(this.tagName)) {
@@ -4924,7 +4924,7 @@
     const data = Modal.getOrCreateInstance(target);
     data.toggle(this);
   });
-  enableDismissTrigger(Modal);
+  enableDismissTrigger(Modal);*/
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -5213,7 +5213,7 @@
 
   const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z]+=*$/i;
 
-  const allowedAttribute = (attribute, allowedAttributeList) => {
+ /* const allowedAttribute = (attribute, allowedAttributeList) => {
     const attributeName = attribute.nodeName.toLowerCase();
 
     if (allowedAttributeList.includes(attributeName)) {
@@ -5233,7 +5233,7 @@
     }
 
     return false;
-  };
+  };*/
 
   const DefaultAllowlist = {
     // Global attributes allowed on any supplied element below.
@@ -5268,7 +5268,7 @@
     u: [],
     ul: []
   };
-  function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
+ /* function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     if (!unsafeHtml.length) {
       return unsafeHtml;
     }
@@ -5300,7 +5300,7 @@
     }
 
     return createdDocument.body.innerHTML;
-  }
+  }*/
 
   /**
    * --------------------------------------------------------------------------
@@ -5394,7 +5394,7 @@
    * ------------------------------------------------------------------------
    */
 
-  class Tooltip extends BaseComponent {
+ class Tooltip extends BaseComponent {
     constructor(element, config) {
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
@@ -6001,7 +6001,7 @@
       });
     }
 
-  }
+  } 
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -6337,7 +6337,7 @@
       });
     }
 
-  }
+  } 
   /**
    * ------------------------------------------------------------------------
    * Data Api implementation
@@ -6402,7 +6402,7 @@
     } // Public
 
 
-    show() {
+    /*show() {
       if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
         return;
       }
@@ -6445,10 +6445,10 @@
       } else {
         complete();
       }
-    } // Private
+    } */// Private
 
 
-    _activate(element, container, callback) {
+ /*   _activate(element, container, callback) {
       const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container) : SelectorEngine.children(container, SELECTOR_ACTIVE);
       const active = activeElements[0];
       const isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE$1);
@@ -6462,9 +6462,9 @@
       } else {
         complete();
       }
-    }
+    } */
 
-    _transitionComplete(element, active, callback) {
+   /* _transitionComplete(element, active, callback) {
       if (active) {
         active.classList.remove(CLASS_NAME_ACTIVE);
         const dropdownChild = SelectorEngine.findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode);
@@ -6509,7 +6509,7 @@
       if (callback) {
         callback();
       }
-    } // Static
+    } */// Static
 
 
     static jQueryInterface(config) {
@@ -6534,7 +6534,7 @@
    */
 
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+ /* EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
     }
@@ -6545,7 +6545,7 @@
 
     const data = Tab.getOrCreateInstance(this);
     data.show();
-  });
+  }); */
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -6599,7 +6599,7 @@
    * ------------------------------------------------------------------------
    */
 
-  class Toast extends BaseComponent {
+ class Toast extends BaseComponent {
     constructor(element, config) {
       super(element);
       this._config = this._getConfig(config);
@@ -6773,7 +6773,7 @@
       });
     }
 
-  }
+  } 
 
   enableDismissTrigger(Toast);
   /**

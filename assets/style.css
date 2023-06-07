@@ -107,8 +107,9 @@ body {
 .gallery .nav {
 	justify-content: center;
 }
+/* blanc au lieu de noir pour l'accessibilité */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-	color: #fff;
+	color: black;
 	background-color: #BEB45A;
 	border-radius:0 ;
 }
