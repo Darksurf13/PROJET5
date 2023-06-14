@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<!-- balise titre-->
 	<title>Nina Carducci photographe professionnel Bordeaux</title>
@@ -9,11 +9,16 @@
 		  "@context": "https://schema.org/",
 		  "@type": "LocalBusiness",
 		  "name": "Nina Carducci Photographe professionel",
-		  "image": "https://./assets/images/nina341.webp",
+		  "image": "http://../assets/images/nina341.webp",
 		  "description": "Je suis Nina Carducci photographe professionnel à Bordeaux spécialisée dans les concerts,les entreprises,les mariages et les portraits",
-		  "address":"68, av alsase lorraine, 33200 bordeaux ",
-		  "telephone": "0556677889",
-		  "openingHours": "Mo,Tu,We,Th,Fr 10:00-19:00"	  
+		  "address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Bordeaux, France",
+			"postalCode": "F-33200",
+			"streetAddress": "68 avenue alsase lorraine"
+		  },
+		  "telephone": "( 33 5) 56 67 78 89",
+		  "openingHours": "Lu,Ma,Me,Je,Ve 10:00-19:00"	  
 		}
 		</script>
 	<!-- balise meta robots-->
@@ -118,7 +123,7 @@
 		</article>
 	</section>
 	<section id="gallery">
-		<h3 class="title">Portfolio</h3>
+		<h2 class="title">Portfolio</h2>
 		<aside class="container py-3">
 			<figure class="gallery" style="display: none">
 				<img data-gallery-tag="Concert" class="gallery-item"
@@ -199,7 +204,7 @@
 			</div>
 		</div>
 	</section>
-	<div class="quote">
+	<section class="quote">
 		<figure>
 			<blockquote>
 				<p class="quote__text">De manière inconsciente, je crois, je guette un regard, une expression, des
@@ -207,8 +212,8 @@
 			</blockquote>
 			<figcaption class="quote__author">- Richard Avedon</figcaption>
 		</figure>
-	</div>
-	<div id="contact">
+	</section>
+	<section id="contact">
 		<div class="container">
 			<div class="form-container">
 				<h2>Une question ? Une demande de devis ?</h2>
@@ -228,6 +233,6 @@
 					loading="lazy">
 			</div>
 		</div>
-	</div>
+	</section>
 </body>
 </html>
